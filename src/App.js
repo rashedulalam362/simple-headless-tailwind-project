@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+
+import { Switch } from '@headlessui/react';
+import { useState } from 'react';
+
+
+
 
 function App() {
+  const [enabled, setEnabled] = useState(false)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="py-16 flex flex-col h-screen my-auto items-center bgimg bg-cover">
+       <Switch
+      checked={enabled}
+      onChange={setEnabled}
+      className={`${
+        enabled ? 'bg-blue-900' : 'bg-gray-500'
+      } relative inline-flex items-center h-6 rounded-full w-11`}
+    >
+      <span className="sr-only">Enable notifications</span>
+      <span
+        className={`${
+          enabled ? 'translate-x-6' : 'translate-x-1'
+        } inline-block w-4 h-4 transform bg-white rounded-full`}
+      />
+    </Switch>
     </div>
+
   );
 }
 
